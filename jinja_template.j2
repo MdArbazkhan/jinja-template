@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <main class="whole-wrapper">
+        <!-- First Part -->
+        <div class="first-part-wrap">
+            <div>
+                <p class="para">Hub*</p><br>
+                <input class="input-field" type="text" value="{{ hub }}"><br>
+                <p class="para">Supplier*</p><br>
+                <input class="input-field" type="text" value="{{ supplier }}"><br>
+                <p class="para">Supplier Name</p><br>
+                <input class="input-field" type="text" value="{{ supplier_name }}"><br>
+            </div>
+            <div>
+                <p class="para">GRN</p><br>
+                <input class="input-field" type="text" value="{{ grn }}">
+            </div>
+        </div>
+
+        <!-- Second Part -->
+        <div class="second-part-wrap">
+            <h2>SKU Summary</h2>
+            <p>SKU Table</p>
+            <table class="table">
+                <tr>
+                    <th>No.</th>
+                    <th>SKU</th>
+                    <th>SKU Description</th>
+                    <th>Standard Crate Quantity</th>
+                    <th>Procured Quantity</th>
+                </tr>
+                {% for item in sku_table %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.sku }}</td>
+                    <td>{{ item.sku_description }}</td>
+                    <td>{{ item.standard_crate_quantity }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+        <!-- Third Part -->
+        <div class="third-part-wrap">
+            <h2>Crate List</h2>
+            <p>Crate Table</p>
+            <table class="table">
+                <tr>
+                    <th>No.</th>
+                    <th>Crate</th>
+                    <th>SKU</th>
+                    <th>Packed Quantity</th>
+                    <th>Crate Weight</th>
+                    <th>Is Final Crate</th>
+                </tr>
+                {% for item in crate_table %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.crate }}</td>
+                    <td>{{ item.sku }}</td>
+                    <td>{{ item.packed_quantity }}</td>
+                    <td>{{ item.crate_weight }}</td>
+                    <td>{{ item.is_final_crate }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </main>
+</body>
+</html>
